@@ -1,0 +1,19 @@
+version: '3.6'
+
+services:
+  postgres:
+    image: dockette/postgres:latest
+    environment:
+      POSTGRES_USER: YyCollection
+      POSTGRES_DB: YyCollection
+      POSTGRES_PASSWORD: YyCollection
+      DB_EXTENSION: unaccent
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - .docker/postgres:/var/lib/postgresq/data:cached
+    ports:
+      - 5432:5432
+  redis:
+    image: redis:latest
+    ports:
+      - 16378:6378
