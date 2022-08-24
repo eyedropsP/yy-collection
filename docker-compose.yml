@@ -7,10 +7,9 @@ services:
       POSTGRES_USER: YyCollection
       POSTGRES_DB: YyCollection
       POSTGRES_PASSWORD: YyCollection
-      DB_EXTENSION: unaccent
       TZ: 'Asia/Tokyo'
     volumes:
-      - .docker/postgres:/var/lib/postgresq/data:cached
+      - ./docker/postgres:/var/lib/postgresq/data:cached
     ports:
       - 5432:5432
   redis:
