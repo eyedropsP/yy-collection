@@ -25,35 +25,11 @@ public sealed class PostResponse
     
     
     /// <summary>
-    /// 投稿者 ID
+    /// 概要
     /// </summary>
     [JsonInclude]
-    [JsonPropertyName("contributorId")]
-    public Ulid ContributorId { get; init; }
-    
-    
-    /// <summary>
-    /// 投稿者アイコン URL
-    /// </summary>
-    [JsonInclude]
-    [JsonPropertyName("contributorIconUrl")]
-    public string ContributorIconUrl { get; init; }
-    
-    
-    /// <summary>
-    /// 投稿者名
-    /// </summary>
-    [JsonInclude]
-    [JsonPropertyName("contributorName")]
-    public string ContributorName { get; init; }
-    
-    
-    /// <summary>
-    /// 投稿説明
-    /// </summary>
-    [JsonInclude]
-    [JsonPropertyName("description")]
-    public string Description { get; init; }
+    [JsonPropertyName("overview")]
+    public string? Overview { get; init; }
 
 
     /// <summary>
@@ -78,6 +54,30 @@ public sealed class PostResponse
     [JsonInclude]
     [JsonPropertyName("endTime")]
     public int EndTime { get; init; }
+    
+    
+    /// <summary>
+    /// 投稿者 ID
+    /// </summary>
+    [JsonInclude]
+    [JsonPropertyName("contributorId")]
+    public Ulid ContributorId { get; init; }
+    
+    
+    /// <summary>
+    /// 投稿者アイコン URL
+    /// </summary>
+    [JsonInclude]
+    [JsonPropertyName("contributorIconUrl")]
+    public string ContributorIconUrl { get; init; }
+    
+    
+    /// <summary>
+    /// 投稿者名
+    /// </summary>
+    [JsonInclude]
+    [JsonPropertyName("contributorName")]
+    public string ContributorName { get; init; }
 
 
     /// <summary>
@@ -98,19 +98,19 @@ public sealed class PostResponse
     /// <param name="contributorId"></param>
     /// <param name="contributorName"></param>
     /// <param name="contributorIconUrl"></param>
-    /// <param name="description"></param>
+    /// <param name="overview"></param>
     /// <param name="mediaUrl"></param>
     /// <param name="startTime"></param>
     /// <param name="endTime"></param>
     /// <param name="postDate"></param>
-    public PostResponse(Ulid id, string title, Ulid contributorId, string contributorName, string contributorIconUrl, string description, string mediaUrl, int startTime, int endTime, DateOnly postDate)
+    public PostResponse(Ulid id, string title, Ulid contributorId, string contributorName, string contributorIconUrl, string overview, string mediaUrl, int startTime, int endTime, DateOnly postDate)
     {
         this.Id = id;
         this.Title = title;
         this.ContributorId = contributorId;
         this.ContributorName = contributorName;
         this.ContributorIconUrl = contributorIconUrl;
-        this.Description = description;
+        this.Overview = overview;
         this.MediaUrl = mediaUrl;
         this.StartTime = startTime;
         this.EndTime = endTime;

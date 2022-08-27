@@ -20,15 +20,9 @@ public sealed class Post
     
     
     /// <summary>
-    /// 投稿説明
+    /// 概要
     /// </summary>
-    public string Description { get; init; }
-
-
-    /// <summary>
-    /// 投稿者 ID
-    /// </summary>
-    public Ulid ContributorId { get; init; }
+    public string? Overview { get; init; }
 
 
     /// <summary>
@@ -47,6 +41,12 @@ public sealed class Post
     /// シーク終了位置 [s]
     /// </summary>
     public int EndTime { get; init; }
+
+
+    /// <summary>
+    /// 投稿者 ID
+    /// </summary>
+    public Ulid ContributorId { get; init; }
 
     
     /// <summary>

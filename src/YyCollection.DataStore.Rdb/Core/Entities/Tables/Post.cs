@@ -27,17 +27,10 @@ public sealed class Post
     
     
     /// <summary>
-    /// 投稿説明
+    /// 概要
     /// </summary>
-    [Column("Description", TypeName = "text")]
-    public string Description { get; init; }
-
-
-    /// <summary>
-    /// 投稿者 ID
-    /// </summary>
-    [Column("ContributorId", TypeName = "char(26)")]
-    public Ulid ContributorId { get; init; }
+    [Column("Overview", TypeName = "text")]
+    public string? Overview { get; init; }
 
 
     /// <summary>
@@ -59,6 +52,13 @@ public sealed class Post
     /// </summary>
     [Column("EndTime")]
     public int EndTime { get; init; }
+
+
+    /// <summary>
+    /// 投稿者 ID
+    /// </summary>
+    [Column("ContributorId", TypeName = "char(26)")]
+    public Ulid ContributorId { get; init; }
 
     
     /// <summary>
