@@ -5,29 +5,22 @@ using YyCollection.Definitions.Enums;
 
 namespace YyCollection.Batch.OneShot.SettingFiles.Rdb;
 
+/// <summary>
+/// YyCollection Database の <see cref="DbContext"/> を提供します。
+/// </summary>
 internal class CoreDbContext : DbContext
 {
     #region プロパティ
     public virtual DbSet<Category> Categories { get; init; }
-
     public virtual DbSet<Comment> Comments { get; init; }
-
     public virtual DbSet<Follow> Follows { get; init; }
-
     public virtual DbSet<Like> Likes { get; init; }
-
     public virtual DbSet<MyList> MyLists { get; init; }
-
     public virtual DbSet<MyListContent> MyListContents { get; init; }
-
     public virtual DbSet<Post> Posts { get; init; }
-
     public virtual DbSet<PostCategoryRelation> PostCategoryRelations { get; init; }
-
     public virtual DbSet<PostTagRelation> PostTagRelations { get; init; }
-
     public virtual DbSet<Tag> Tags { get; init; }
-
     public virtual DbSet<User> Users { get; init; }
     #endregion
 
@@ -56,12 +49,11 @@ internal class CoreDbContext : DbContext
         modelBuilder.Entity<MyListContent>().HasKey(static x => new {x.MyListId, x.PostId});
         modelBuilder.Entity<Like>().HasKey(static x => new {x.PostId, x.UserId});
         modelBuilder.Entity<Follow>().HasKey(static x => new {x.FollowerId, x.FolloweeId});
-        
+
         //--- enum
         modelBuilder.HasPostgresEnum<PrivacyStatus>();
         base.OnModelCreating(modelBuilder);
     }
-
 
     /// <inheritdoc />
     protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
