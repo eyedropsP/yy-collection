@@ -1,12 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using Npgsql;
 
 namespace YyCollection.Batch.OneShot.SettingFiles.Rdb;
 
+/// <summary>
+/// デザイン時に <see cref="CoreDbContext"/> を生成する機構を提供します。
+/// </summary>
 internal class DesignTimeMainDbContextFactory : IDesignTimeDbContextFactory<CoreDbContext>
 {
+    /// <inheritdoc />
     public CoreDbContext CreateDbContext(string[] args)
     {
         var connectionString = getConnectionString();
@@ -16,7 +19,6 @@ internal class DesignTimeMainDbContextFactory : IDesignTimeDbContextFactory<Core
         return new CoreDbContext(options);
 
         #region ローカル関数
-
         static string getConnectionString()
         {
             //--- 環境変数読み込み
@@ -25,38 +27,16 @@ internal class DesignTimeMainDbContextFactory : IDesignTimeDbContextFactory<Core
                 .AddUserSecrets<DesignTimeMainDbContextFactory>(optional: true)
                 .Build();
 
-            //--- 本番環境とローカルで取得するものを変更する
-            //--- 環境変数から取得
-            var connectionString = config.GetValue<string>("DATABASE_URL");
-            if (!string.IsNullOrWhiteSpace(connectionString))
-                return connectionString;
-
-            //--- 環境変数にないなら UserSecrets から取得
-            var host = config.GetValue<string>("HOST");
-            var userName = config.GetValue<string>("POSTGRES_USER");
-            var db = config.GetValue<string>("POSTGRES_DB");
-            var password = config.GetValue<string>("POSTGRES_PASSWORD");
-            var port = config.GetValue<int>("PORT");
-            var builder = new NpgsqlConnectionStringBuilder
-            {
-                Host = host,
-                Username = userName,
-                Database = db,
-                Password = password,
-                Port = port,
-            };
-
-            return builder.ConnectionString;
+            //--- 環境変数または UserSecrets から取得
+            return config.GetValue<string>("Rdb:Core:Primary");
         }
 
-        
         static DbContextOptions<CoreDbContext> createDbContextOptions(string connectionString)
         {
             var builder = new DbContextOptionsBuilder<CoreDbContext>();
             builder.UseNpgsql(connectionString, static o => { o.CommandTimeout(600); });
             return builder.Options;
         }
-
         #endregion
     }
 }
