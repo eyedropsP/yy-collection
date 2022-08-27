@@ -51,7 +51,7 @@ internal class CoreDbContext : DbContext
         modelBuilder.Entity<Follow>().HasKey(static x => new {x.FollowerId, x.FolloweeId});
 
         //--- enum
-        modelBuilder.HasPostgresEnum<PrivacyStatus>();
+        // modelBuilder.HasPostgresEnum<PrivacyStatus>();
         base.OnModelCreating(modelBuilder);
     }
 

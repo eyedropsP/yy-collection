@@ -1,6 +1,6 @@
 @echo off
 
 cd ../../
-dotnet ef database update
+dotnet ef database update 
 
 pause

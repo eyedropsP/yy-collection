@@ -13,7 +13,7 @@ using YyCollection.Definitions.Enums;
 namespace YyCollection.Batch.OneShot.SettingFiles.Rdb.Migrations
 {
     [DbContext(typeof(CoreDbContext))]
-    [Migration("20220823145030_Initialize")]
+    [Migration("20220827192244_Initialize")]
     partial class Initialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,7 +23,6 @@ namespace YyCollection.Batch.OneShot.SettingFiles.Rdb.Migrations
                 .HasAnnotation("ProductVersion", "6.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "privacy_status", new[] { "private", "public" });
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("YyCollection.DataStore.Rdb.Core.Entities.Tables.Category", b =>
@@ -59,6 +58,11 @@ namespace YyCollection.Batch.OneShot.SettingFiles.Rdb.Migrations
                     b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("CreatedAt");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("Comment");
 
                     b.Property<string>("PostId")
                         .IsRequired()
@@ -187,6 +191,11 @@ namespace YyCollection.Batch.OneShot.SettingFiles.Rdb.Migrations
                         .HasColumnType("char(26)")
                         .HasColumnName("Id");
 
+                    b.Property<string>("ContributorId")
+                        .IsRequired()
+                        .HasColumnType("char(26)")
+                        .HasColumnName("ContributorId");
+
                     b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("CreatedAt");
@@ -200,6 +209,10 @@ namespace YyCollection.Batch.OneShot.SettingFiles.Rdb.Migrations
                         .HasColumnType("varchar(255)")
                         .HasColumnName("MediaUrl");
 
+                    b.Property<string>("Overview")
+                        .HasColumnType("text")
+                        .HasColumnName("Overview");
+
                     b.Property<int>("StartTime")
                         .HasColumnType("integer")
                         .HasColumnName("StartTime");
@@ -212,11 +225,6 @@ namespace YyCollection.Batch.OneShot.SettingFiles.Rdb.Migrations
                     b.Property<DateTimeOffset>("UpdatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("UpdatedAt");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("char(26)")
-                        .HasColumnName("UserId");
 
                     b.HasKey("Id");
 
@@ -303,8 +311,15 @@ namespace YyCollection.Batch.OneShot.SettingFiles.Rdb.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("CreatedAt");
 
+                    b.Property<string>("IconUrl")
+                        .IsRequired()
+                        .ValueGeneratedOnUpdateSometimes()
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("Name");
+
                     b.Property<string>("Name")
                         .IsRequired()
+                        .ValueGeneratedOnUpdateSometimes()
                         .HasColumnType("varchar(255)")
                         .HasColumnName("Name");
 

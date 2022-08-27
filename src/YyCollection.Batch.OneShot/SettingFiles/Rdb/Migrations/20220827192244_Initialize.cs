@@ -10,9 +10,6 @@ namespace YyCollection.Batch.OneShot.SettingFiles.Rdb.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterDatabase()
-                .Annotation("Npgsql:Enum:privacy_status", "private,public");
-
             migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
@@ -34,6 +31,7 @@ namespace YyCollection.Batch.OneShot.SettingFiles.Rdb.Migrations
                     Id = table.Column<string>(type: "char(26)", nullable: false),
                     PostId = table.Column<string>(type: "char(26)", nullable: false),
                     UserId = table.Column<string>(type: "char(26)", nullable: false),
+                    Comment = table.Column<string>(type: "text", nullable: false),
                     CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
@@ -120,10 +118,11 @@ namespace YyCollection.Batch.OneShot.SettingFiles.Rdb.Migrations
                 {
                     Id = table.Column<string>(type: "char(26)", nullable: false),
                     Title = table.Column<string>(type: "varchar(255)", nullable: false),
-                    UserId = table.Column<string>(type: "char(26)", nullable: false),
+                    Overview = table.Column<string>(type: "text", nullable: true),
                     MediaUrl = table.Column<string>(type: "varchar(255)", nullable: false),
                     StartTime = table.Column<int>(type: "integer", nullable: false),
                     EndTime = table.Column<int>(type: "integer", nullable: false),
+                    ContributorId = table.Column<string>(type: "char(26)", nullable: false),
                     CreatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false)
                 },
