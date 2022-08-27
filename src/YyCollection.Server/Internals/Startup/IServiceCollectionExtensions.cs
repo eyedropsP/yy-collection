@@ -38,6 +38,9 @@ internal static class IServiceCollectionExtensions
         //--- Project Libraries
         services.AddRdb(appSettings.Rdb);
         services.AddRedis(appSettings.Redis);
+        
+        //--- Domain Services
+        services.TryAddSingleton<DomainService.Posts.PostService>();
 
         return services;
     }
