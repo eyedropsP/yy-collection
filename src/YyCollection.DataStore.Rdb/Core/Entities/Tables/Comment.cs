@@ -34,6 +34,13 @@ public sealed class Comment
     
     
     /// <summary>
+    /// コメント
+    /// </summary>
+    [Column("Comment", TypeName = "text")]
+    public string Message { get; init; }
+    
+    
+    /// <summary>
     /// 登録日時
     /// </summary>
     [Column("CreatedAt", TypeName = "timestamp with time zone")]

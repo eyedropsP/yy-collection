@@ -20,17 +20,24 @@ public sealed class Post
 
 
     /// <summary>
-    /// タイトル
+    /// 投稿タイトル
     /// </summary>
     [Column("Title", TypeName = "varchar(255)")]
     public string Title { get; init; }
+    
+    
+    /// <summary>
+    /// 投稿説明
+    /// </summary>
+    [Column("Description", TypeName = "text")]
+    public string Description { get; init; }
 
 
     /// <summary>
     /// 投稿者 ID
     /// </summary>
-    [Column("UserId", TypeName = "char(26)")]
-    public Ulid UserId { get; init; }
+    [Column("ContributorId", TypeName = "char(26)")]
+    public Ulid ContributorId { get; init; }
 
 
     /// <summary>

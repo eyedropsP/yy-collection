@@ -25,6 +25,13 @@ public sealed class User
     
     
     /// <summary>
+    /// ユーザーアイコン URL
+    /// </summary>
+    [Column("Name", TypeName = "varchar(255)")]
+    public string IconUrl { get; init; }
+    
+    
+    /// <summary>
     /// 登録日時
     /// </summary>
     [Column("CreatedAt", TypeName = "timestamp with time zone")]
