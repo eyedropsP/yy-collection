@@ -20,6 +20,5 @@ public class UlidSchemaFilter : ISchemaFilter
         {
             schema.Type = schemaType;
         }
-        throw new NotImplementedException();
     }
 }
