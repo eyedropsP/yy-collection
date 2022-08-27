@@ -1,6 +1,4 @@
-
-//--- Configure application
-
+using YyCollection.Server.Internals.OpenApi;
 using YyCollection.Server.Internals.Startup;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,30 +7,36 @@ builder.Host
     .ConfigureServices(static (context, services) =>
     {
         var appSettings = services.ConfigureAppSettings(context.Configuration);
+        services.AddPerformance();
+        services.AddRequestRouting();
+        services.AddAspNetCoreMvc();
         services.AddDomainServices(appSettings);
+        
+        if (context.HostingEnvironment.IsDevelopment())
+            services.AddOpenApi();
     });
 
-// Add services to the container.
-
-builder.Services.AddControllers();
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
+    app.UseOpenApi();
+}
+else
+{
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
-
+app.UseStaticFiles();
+app.UseResponseCompression();
+app.UseWebSockets();
+app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
-
-app.MapControllers();
+app.UseEndpoints(static endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.Run();

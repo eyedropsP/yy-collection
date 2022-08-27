@@ -11,8 +11,16 @@ using YyCollection.Server.Internals.OpenApi.Filters;
 namespace YyCollection.Server.Internals.OpenApi;
 
 // ReSharper disable once InconsistentNaming
+/// <summary>
+/// <see cref="IServiceCollection"/> の拡張機能を提供します。
+/// </summary>
 internal static class IServiceCollectionExtensions
 {
+    /// <summary>
+    /// Open API 関連機能を DI に登録します。
+    /// </summary>
+    /// <param name="services"></param>
+    /// <returns></returns>
     public static IServiceCollection AddOpenApi(this IServiceCollection services)
     {
         services.TryAddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerGenOptions>();
@@ -21,6 +29,9 @@ internal static class IServiceCollectionExtensions
     }
 
 
+    /// <summary>
+    /// <see cref="SwaggerGenOptions"/> を構成します。
+    /// </summary>
     private sealed class ConfigureSwaggerGenOptions : IConfigureOptions<SwaggerGenOptions>
     {
         #region プロパティ
@@ -30,6 +41,16 @@ internal static class IServiceCollectionExtensions
         private IApiVersionDescriptionProvider Provider { get; }
         #endregion
 
+
+        #region コンストラクタ
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="provider"></param>
+        public ConfigureSwaggerGenOptions(IApiVersionDescriptionProvider provider)
+            => this.Provider = provider;
+        #endregion
+        
 
         #region IConfigureOptions implementations
         public void Configure(SwaggerGenOptions options)

@@ -4,7 +4,7 @@ using YyCollection.DataStore.Redis;
 namespace YyCollection.Server;
 
 /// <summary>
-/// 
+/// アプリケーション設定を表します。
 /// </summary>
 public sealed class AppSettings
 {
