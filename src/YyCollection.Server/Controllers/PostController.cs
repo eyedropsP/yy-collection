@@ -92,7 +92,7 @@ public class PostsController : ControllerBase
         if (category is null)
             return this.BadRequest("カテゴリが不正です。");
 
-        var postRelation = new PostRelation()
+        var postRelation = new PostRelation
         {
             Post = post,
             Category = category,
