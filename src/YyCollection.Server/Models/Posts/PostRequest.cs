@@ -1,5 +1,5 @@
 ﻿using System.Text.Json.Serialization;
-using YyCollection.Server.DomainService.Posts.Entities;
+using Post = YyCollection.Server.DomainService.Posts.Entities.Post;
 
 namespace YyCollection.Server.Models.Posts;
 
@@ -56,6 +56,22 @@ public sealed class PostRequest
     [JsonInclude]
     [JsonPropertyName("contributorId")]
     public Ulid ContributorId { get; init; }
+    
+    
+    /// <summary>
+    /// カテゴリ ID 
+    /// </summary>
+    [JsonInclude]
+    [JsonPropertyName("categoryId")]
+    public Ulid CategoryId { get; init; }
+    
+    
+    /// <summary>
+    /// タグ ID のコレクション
+    /// </summary>
+    [JsonInclude]
+    [JsonPropertyName("tagIds")]
+    public IReadOnlyList<Ulid> TagIds { get; init; }
 #pragma warning restore CS8618
     #endregion
 

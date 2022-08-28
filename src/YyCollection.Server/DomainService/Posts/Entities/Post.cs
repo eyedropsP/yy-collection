@@ -47,7 +47,7 @@ public sealed class Post
     /// 投稿者 ID
     /// </summary>
     public Ulid ContributorId { get; init; }
-
+    
     
     /// <summary>
     /// 登録日時

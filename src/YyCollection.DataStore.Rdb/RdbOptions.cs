@@ -5,6 +5,7 @@
 /// </summary>
 public sealed class RdbOptions
 {
+#pragma warning disable CS8618
     #region プロパティ
     /// <summary>
     /// メインデータベースへの接続設定を取得します。
@@ -15,7 +16,6 @@ public sealed class RdbOptions
     /// 既定のタイムアウト時間 [s] を取得します。 
     /// </summary>
     public int? CommandTimeout { get; init; }
-
     
     /// <summary>
     /// マスタキャッシュの有効期限を取得します。
@@ -23,22 +23,23 @@ public sealed class RdbOptions
     public TimeSpan MasterCacheExpiry { get; init; }
     #endregion
 
-    
+
     #region Nested Type
     /// <summary>
     /// 接続設定を取得します。 
     /// </summary>
+    // ReSharper disable once ClassNeverInstantiated.Global
     public sealed class ConnectionSetting
     {
         /// <summary>
         /// プライマリ DB への接続文字列を取得します。
         /// </summary>
         public string Primary { get; init; }
-        
         /// <summary>
         /// セカンダリ DB への接続文字列を取得します。
         /// </summary>
         public string Secondary { get; init; }
     }
     #endregion
+#pragma warning restore CS8618
 }

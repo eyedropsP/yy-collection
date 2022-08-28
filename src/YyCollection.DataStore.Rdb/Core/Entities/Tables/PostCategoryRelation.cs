@@ -1,5 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using YyCollection.DataStore.Rdb.Internals;
 
 namespace YyCollection.DataStore.Rdb.Core.Entities.Tables;
 
@@ -29,6 +31,7 @@ public sealed class PostCategoryRelation
     /// <summary>
     /// 登録日時
     /// </summary>
+    [AmbientValue(KnownConstants.UtcNow)]
     [Column("CreatedAt", TypeName = "timestamp with time zone")]
     public DateTimeOffset CreatedAt { get; init; }
     
@@ -36,6 +39,7 @@ public sealed class PostCategoryRelation
     /// <summary>
     /// 更新日時
     /// </summary>
+    [AmbientValue(KnownConstants.UtcNow)]
     [Column("UpdatedAt", TypeName = "timestamp with time zone")]
     public DateTimeOffset UpdatedAt { get; init; }
 #pragma warning restore CS8618
