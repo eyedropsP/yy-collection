@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Text.RegularExpressions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
@@ -28,7 +29,9 @@ internal class DesignTimeMainDbContextFactory : IDesignTimeDbContextFactory<Core
                 .Build();
 
             //--- 環境変数または UserSecrets から取得
-            return config.GetValue<string>("RDB_URL_PRIMARY");
+            var match = Regex.Match(config.GetValue<string>("RDB_URL_PRIMARY")!, @"postgres://(.*):(.*)@(.*):(.*)/(.*)");
+            var connectionString = $"Server={match.Groups[3]};Port={match.Groups[4]};User Id={match.Groups[1]};Password={match.Groups[2]};Database={match.Groups[5]};sslmode=Prefer;Trust Server Certificate=true";
+            return connectionString;
         }
 
         static DbContextOptions<CoreDbContext> createDbContextOptions(string connectionString)
