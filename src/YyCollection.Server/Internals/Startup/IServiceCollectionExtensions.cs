@@ -21,7 +21,28 @@ internal static class IServiceCollectionExtensions
     /// <returns></returns>
     public static AppSettings ConfigureAppSettings(this IServiceCollection services, IConfiguration configuration)
     {
-        var appSettings = configuration.Get<AppSettings>(static o => o.BindNonPublicProperties = true);
+        var rdbConnectionString = configuration.GetValue<string>("RDB_URL_PRIMARY");
+        var commandTimeout = configuration.GetValue<int>("RDB_COMMAND_TIMEOUT");
+        var masterCacheExpiry = configuration.GetValue<TimeSpan>("RDB_MASTER_CACHE_EXPIRY");
+        var redisConnectionString = configuration.GetValue<string>("REDIS_TLS_URL");
+        var appSettings = new AppSettings
+        {
+            Rdb = new RdbOptions
+            {
+                Core = new RdbOptions.ConnectionSetting
+                {
+                    Primary = rdbConnectionString,
+                    Secondary = rdbConnectionString,
+                },
+                CommandTimeout = commandTimeout,
+                MasterCacheExpiry = masterCacheExpiry,
+            },
+            Redis = new RedisOptions
+            {
+                ConnectionString = redisConnectionString,
+            },
+        };
+        
         services.TryAddSingleton(appSettings);
         return appSettings;
     }

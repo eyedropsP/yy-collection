@@ -13,12 +13,12 @@ public sealed class AppSettings
     /// データベースの構成を取得します。
     /// </summary>
     // ReSharper disable once UnusedAutoPropertyAccessor.Local
-    public RdbOptions Rdb { get; private init; }
+    public RdbOptions Rdb { get; init; }
     
     /// <summary>
     /// Redis の構成を取得します。
     /// </summary>
     // ReSharper disable once UnusedAutoPropertyAccessor.Local
-    public RedisOptions Redis { get; private init; }
+    public RedisOptions Redis { get; init; }
 #pragma warning restore CS8618
 }
