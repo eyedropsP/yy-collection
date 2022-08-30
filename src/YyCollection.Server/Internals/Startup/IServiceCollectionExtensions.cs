@@ -1,4 +1,5 @@
 ﻿#nullable enable
+using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -21,7 +22,8 @@ internal static class IServiceCollectionExtensions
     /// <returns></returns>
     public static AppSettings ConfigureAppSettings(this IServiceCollection services, IConfiguration configuration)
     {
-        var rdbConnectionString = configuration.GetValue<string>("RDB_URL_PRIMARY");
+        var match = Regex.Match(configuration.GetValue<string>("RDB_URL_PRIMARY")!, @"postgres://(.*):(.*)@(.*):(.*)/(.*)");
+        var rdbConnectionString = $"Server={match.Groups[3]};Port={match.Groups[4]};User Id={match.Groups[1]};Password={match.Groups[2]};Database={match.Groups[5]};sslmode=Prefer;Trust Server Certificate=true";
         var commandTimeout = configuration.GetValue<int>("RDB_COMMAND_TIMEOUT");
         var masterCacheExpiry = configuration.GetValue<TimeSpan>("RDB_MASTER_CACHE_EXPIRY");
         var redisConnectionString = configuration.GetValue<string>("REDIS_TLS_URL");
