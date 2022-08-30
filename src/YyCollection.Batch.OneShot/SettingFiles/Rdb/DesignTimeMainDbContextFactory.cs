@@ -28,11 +28,7 @@ internal class DesignTimeMainDbContextFactory : IDesignTimeDbContextFactory<Core
                 .Build();
 
             //--- 環境変数または UserSecrets から取得
-            foreach(var variable in config.AsEnumerable().Select(static x => x.ToString()))
-            {
-                Console.WriteLine(variable);
-            }
-            return config.GetValue<string>("Rdb:Core:Primary");
+            return config.GetValue<string>("RDB_URL_PRIMARY");
         }
 
         static DbContextOptions<CoreDbContext> createDbContextOptions(string connectionString)
