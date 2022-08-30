@@ -10,6 +10,9 @@ namespace YyCollection.Batch.OneShot.SettingFiles.Rdb.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AlterDatabase()
+                .Annotation("Npgsql:Enum:privacy_status", "private,public");
+
             migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new

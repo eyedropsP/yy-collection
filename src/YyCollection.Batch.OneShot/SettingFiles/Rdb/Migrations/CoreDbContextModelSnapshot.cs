@@ -21,6 +21,7 @@ namespace YyCollection.Batch.OneShot.SettingFiles.Rdb.Migrations
                 .HasAnnotation("ProductVersion", "6.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
+            NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "privacy_status", new[] { "private", "public" });
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("YyCollection.DataStore.Rdb.Core.Entities.Tables.Category", b =>

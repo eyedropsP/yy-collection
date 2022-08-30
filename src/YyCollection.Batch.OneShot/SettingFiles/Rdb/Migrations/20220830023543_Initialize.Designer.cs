@@ -13,7 +13,7 @@ using YyCollection.Definitions.Enums;
 namespace YyCollection.Batch.OneShot.SettingFiles.Rdb.Migrations
 {
     [DbContext(typeof(CoreDbContext))]
-    [Migration("20220827192244_Initialize")]
+    [Migration("20220830023543_Initialize")]
     partial class Initialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,7 @@ namespace YyCollection.Batch.OneShot.SettingFiles.Rdb.Migrations
                 .HasAnnotation("ProductVersion", "6.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
+            NpgsqlModelBuilderExtensions.HasPostgresEnum(modelBuilder, "privacy_status", new[] { "private", "public" });
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("YyCollection.DataStore.Rdb.Core.Entities.Tables.Category", b =>
