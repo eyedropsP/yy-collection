@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YyCollection", "YyCollection\YyCollection.csproj", "{7C7F43A6-40B4-4D8F-A7D9-8F82974A0F51}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YyCollection.Client", "YyCollection.Client\YyCollection.Client.csproj", "{7C7F43A6-40B4-4D8F-A7D9-8F82974A0F51}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YyCollection.Batch.OneShot", "YyCollection.Batch.OneShot\YyCollection.Batch.OneShot.csproj", "{6327562F-98BD-4648-B00D-8AA2E3BC91AB}"
 EndProject
