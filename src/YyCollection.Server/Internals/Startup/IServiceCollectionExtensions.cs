@@ -22,8 +22,10 @@ internal static class IServiceCollectionExtensions
     /// <returns></returns>
     public static AppSettings ConfigureAppSettings(this IServiceCollection services, IConfiguration configuration)
     {
-        var match = Regex.Match(configuration.GetValue<string>("RDB_URL_PRIMARY")!, @"postgres://(.*):(.*)@(.*):(.*)/(.*)");
-        var rdbConnectionString = $"Server={match.Groups[3]};Port={match.Groups[4]};User Id={match.Groups[1]};Password={match.Groups[2]};Database={match.Groups[5]};sslmode=Prefer;Trust Server Certificate=true";
+        var match = Regex.Match(configuration.GetValue<string>("RDB_URL_PRIMARY")!,
+            @"postgres://(.*):(.*)@(.*):(.*)/(.*)");
+        var rdbConnectionString =
+            $"Server={match.Groups[3]};Port={match.Groups[4]};User Id={match.Groups[1]};Password={match.Groups[2]};Database={match.Groups[5]};sslmode=Prefer;Trust Server Certificate=true";
         var commandTimeout = configuration.GetValue<int>("RDB_COMMAND_TIMEOUT");
         var masterCacheExpiry = configuration.GetValue<TimeSpan>("RDB_MASTER_CACHE_EXPIRY");
         var redisConnectionString = configuration.GetValue<string>("REDIS_TLS_URL");
@@ -44,7 +46,7 @@ internal static class IServiceCollectionExtensions
                 ConnectionString = redisConnectionString,
             },
         };
-        
+
         services.TryAddSingleton(appSettings);
         return appSettings;
     }
@@ -61,7 +63,7 @@ internal static class IServiceCollectionExtensions
         //--- Project Libraries
         services.AddRdb(appSettings.Rdb);
         services.AddRedis(appSettings.Redis);
-        
+
         //--- Domain Services
         services.TryAddSingleton<DomainService.Posts.PostService>();
 
@@ -79,8 +81,8 @@ internal static class IServiceCollectionExtensions
         services.AddResponseCompression();
         return services;
     }
-    
-        
+
+
     /// <summary>
     /// 認証 / 認可機能を DI に登録します。
     /// </summary>
@@ -101,10 +103,7 @@ internal static class IServiceCollectionExtensions
     /// <returns></returns>
     public static IServiceCollection AddRequestRouting(this IServiceCollection services)
     {
-        services.AddRouting(static o =>
-        {
-            o.LowercaseUrls = true;
-        });
+        services.AddRouting(static o => { o.LowercaseUrls = true; });
         return services;
     }
 
@@ -117,7 +116,7 @@ internal static class IServiceCollectionExtensions
     public static IMvcBuilder AddAspNetCoreMvc(this IServiceCollection services)
     {
         var mvcBuilder = services.AddControllers();
-        
+
         services.AddApiVersioning(static o =>
         {
             o.ReportApiVersions = true;
@@ -132,7 +131,7 @@ internal static class IServiceCollectionExtensions
             o.AssumeDefaultVersionWhenUnspecified = true;
             o.DefaultApiVersion = ApiVersion.Default;
         });
-        
+
         return mvcBuilder;
     }
 }
