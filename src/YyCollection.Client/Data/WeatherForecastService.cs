@@ -1,4 +1,4 @@
-namespace YyCollectionForTwitch.Data;
+namespace YyCollection.Client.Data;
 
 public class WeatherForecastService
 {

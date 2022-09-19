@@ -1,4 +1,4 @@
-﻿namespace YyCollectionForTwitch;
+﻿namespace YyCollection.Client;
 
 public class StartUp
 {

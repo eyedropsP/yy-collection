@@ -1,4 +1,4 @@
-namespace YyCollectionForTwitch;
+namespace YyCollection.Client;
 
 public static class Program
 {
