@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YyCollection.DataStore.Redi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YyCollection.Core", "YyCollection.Core\YyCollection.Core.csproj", "{A56F530D-BB80-4797-AACF-92D323639604}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp1", "BlazorApp1\BlazorApp1.csproj", "{BC1905A5-818B-4278-9563-C87B6429C3A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{A56F530D-BB80-4797-AACF-92D323639604}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A56F530D-BB80-4797-AACF-92D323639604}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A56F530D-BB80-4797-AACF-92D323639604}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC1905A5-818B-4278-9563-C87B6429C3A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC1905A5-818B-4278-9563-C87B6429C3A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC1905A5-818B-4278-9563-C87B6429C3A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC1905A5-818B-4278-9563-C87B6429C3A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
