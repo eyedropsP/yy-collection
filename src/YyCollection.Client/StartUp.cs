@@ -10,6 +10,12 @@ public class StartUp
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddControllersWithViews();
+        services.AddAuthentication()
+            .AddTwitter(o =>
+            {
+                o.ConsumerKey = this.Configuration["Authentication_Twitter_ConsumerApiKey"];
+                o.ConsumerSecret = this.Configuration["Authentication_Twitter_ConsumerApiSecrets"];
+            });
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
