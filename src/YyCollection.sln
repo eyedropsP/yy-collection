@@ -1,7 +1,5 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YyCollection.Client", "YyCollection.Client\YyCollection.Client.csproj", "{7C7F43A6-40B4-4D8F-A7D9-8F82974A0F51}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YyCollection.Batch.OneShot", "YyCollection.Batch.OneShot\YyCollection.Batch.OneShot.csproj", "{6327562F-98BD-4648-B00D-8AA2E3BC91AB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YyCollection.DataStore.Rdb", "YyCollection.DataStore.Rdb\YyCollection.DataStore.Rdb.csproj", "{15C29872-62C7-453E-ADE1-9FEA2B1D423E}"
@@ -14,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YyCollection.DataStore.Redi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YyCollection.Core", "YyCollection.Core\YyCollection.Core.csproj", "{A56F530D-BB80-4797-AACF-92D323639604}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp1", "BlazorApp1\BlazorApp1.csproj", "{BC1905A5-818B-4278-9563-C87B6429C3A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YyCollection.Client", "YyCollection.Client\YyCollection.Client.csproj", "{7CB494D0-B144-4A08-BF96-76738E17E26E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,10 +20,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7C7F43A6-40B4-4D8F-A7D9-8F82974A0F51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C7F43A6-40B4-4D8F-A7D9-8F82974A0F51}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C7F43A6-40B4-4D8F-A7D9-8F82974A0F51}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C7F43A6-40B4-4D8F-A7D9-8F82974A0F51}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6327562F-98BD-4648-B00D-8AA2E3BC91AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6327562F-98BD-4648-B00D-8AA2E3BC91AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6327562F-98BD-4648-B00D-8AA2E3BC91AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -50,9 +44,9 @@ Global
 		{A56F530D-BB80-4797-AACF-92D323639604}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A56F530D-BB80-4797-AACF-92D323639604}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A56F530D-BB80-4797-AACF-92D323639604}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BC1905A5-818B-4278-9563-C87B6429C3A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BC1905A5-818B-4278-9563-C87B6429C3A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BC1905A5-818B-4278-9563-C87B6429C3A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BC1905A5-818B-4278-9563-C87B6429C3A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CB494D0-B144-4A08-BF96-76738E17E26E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CB494D0-B144-4A08-BF96-76738E17E26E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CB494D0-B144-4A08-BF96-76738E17E26E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CB494D0-B144-4A08-BF96-76738E17E26E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
