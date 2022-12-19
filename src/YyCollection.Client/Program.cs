@@ -1,11 +1,25 @@
-namespace YyCollection.Client;
+var builder = WebApplication.CreateBuilder(args);
 
-public static class Program
+// Add services to the container.
+builder.Services.AddRazorPages();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
 {
-    public static void Main(string[] args)
-        => CreateHostBuilder(args).Build().Run();
-    
-    private static IHostBuilder CreateHostBuilder(string[] args)
-        => Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(static webBuilder => webBuilder.UseStartup<StartUp>());
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
 }
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapRazorPages();
+
+app.Run();
