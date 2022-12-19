@@ -14,7 +14,7 @@ internal static class IConfigurationBuilderExtensions
     /// <param name="builder"></param>
     /// <param name="context"></param>
     /// <returns></returns>
-    public static IConfigurationBuilder AddHerokuAppConfiguration(this IConfigurationBuilder builder, HostBuilderContext context)
+    public static IConfigurationBuilder AddAppConfiguration(this IConfigurationBuilder builder, HostBuilderContext context)
     {
         var env = context.HostingEnvironment;
 

@@ -20,7 +20,7 @@ internal static class IServiceCollectionExtensions
     /// <param name="services"></param>
     /// <param name="configuration"></param>
     /// <returns></returns>
-    public static AppSettings ConfigureAppSettings(this IServiceCollection services, IConfiguration configuration)
+    public static AppSettings ConfigureHerokuAppSettings(this IServiceCollection services, IConfiguration configuration)
     {
         var match = Regex.Match(configuration.GetValue<string>("RDB_URL_PRIMARY")!,
             @"postgres://(.*):(.*)@(.*):(.*)/(.*)");
